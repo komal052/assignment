@@ -1,0 +1,29 @@
+{{!-- <h3><a class="btn btn-secondary" href="/students"><i class="fa fa-plus"></i>Create New</a> Students List</h3> --}}
+<table >
+    <thead>
+        <tr>
+           
+            <th>Name</th>
+            <th>City</th>
+            <th>Contactno</th>
+            <th>image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+           
+            <td>{{this.name}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.contactno}}</td>
+             <td><img width="100px" height="100px" src = "/{{this.image}}"</td>
+            <td>
+                <a href="/students/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true">edit</i></a>
+                <a href="/students/delete/{{this._id}}" onclick="return confirm('Are u sure to delete the record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true">Delete</i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+
+</table>

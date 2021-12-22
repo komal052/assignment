@@ -1,0 +1,43 @@
+
+<html>
+  <body>
+    <table border="1" >
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>.
+        <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody id="studentdata"></tbody>
+    </table>
+    <a href="/logout">Logout</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(async function () {
+        try {
+          var res = await fetch("/studentdata", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
+          var data = await res.json();
+          var value = "";
+          data.data.forEach((element) => {
+            value += ` <tr>
+                    <td >${element.name}</td>
+                    <td >${element.email}</td>
+                    <td >${element.password}</td>
+                    <td >${element.address}</td>
+                    <td ><a href="/edit/${element._id}">Edit</a></td>
+                    <td ><a href="/delete/${element._id}">Delete</a></td>
+                    </tr>`;
+          });
+          $("#studentdata").append(value);
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+  </body>
+</html>

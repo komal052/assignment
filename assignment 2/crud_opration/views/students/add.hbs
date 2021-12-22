@@ -1,0 +1,44 @@
+<html>
+<h3>
+    {{viewtitle}}
+</h3>
+
+<form  action="/students" method="POST" enctype="multipart/form-data">
+<table>
+     <input type="hidden" name="_id" value="{{student._id}}">
+   <tr>
+       <td>
+         <label>Name:</label>
+        <input type="text"  name="name" value="{{student.name}}">
+       </td>
+   </tr>
+
+   <tr>
+       <td>
+          <label>City:</label>
+        <input type="text"  name="city" value="{{student.city}}">
+       </td>
+   </tr>
+   <tr>
+       <td>
+          <label>Contactno:</label>
+        <input type="text"  name="contact" value="{{student.contactno}}">
+       </td>
+   </tr>
+
+   <tr>
+       <td>
+         <label>Image</label>  
+        <input type="file" name="file" value="">
+       </td>
+   </tr>
+   <tr>
+       <td>
+         <button type="submit" name="btnsubmit">Add</button>
+       </td>
+   </tr>
+
+    </table>    
+
+</form>
+</html>

@@ -1,0 +1,40 @@
+<html>
+ 
+  <body>
+    <h3>Student </h3>
+    <form action="/edit" method="post">
+      <input type="hidden" name="_id" id="_id" value="" />
+       Name :
+      <input type="text" name="name" id="name" value="" />
+      <br /><br />
+      Email :<input type="text" name="email" id="email" value="" /> <br /><br />
+      Address :<input type="text" name="address" id="addresss" value="" />
+      <br /><br />
+      <input type="submit" value="Edit" /><br/><br/>
+   
+     
+    </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      let param = window.location.href.split("/");
+      var _id = param.slice(-1)[0];
+      $(document).ready(async function () {
+        var res = await fetch("/editstudent", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ _id: _id }),
+        });
+
+        var data = await res.json();
+        $("#_id").val(_id);
+        $("#firstname").val(data.data.firstname);
+        $("#lastname").val(data.data.lastname);
+        $("#email").val(data.data.email);
+      });
+    </script>
+  </body>
+</html>
